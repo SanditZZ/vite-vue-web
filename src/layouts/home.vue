@@ -4,8 +4,10 @@
     text="center gray-700 dark:gray-200"
   >
     <RouterView />
+    <AnimeCard />
     <TheFooter />
     <div mx-auto mt-5 text-center text-sm opacity-50>
+      <h3>Home Layout</h3>
       [Home Layout]
     </div>
   </main>
