@@ -1,8 +1,12 @@
 {
+  "name": "vite-vue-web",
   "type": "module",
   "private": true,
   "packageManager": "pnpm@8.6.7",
+  "homepage": "https://sanditzz.github.io/vite-vue-web/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vite-ssg build",
     "dev": "vite --port 3333 --open",
     "lint": "eslint .",
@@ -45,6 +49,7 @@
     "cypress-vite": "^1.4.1",
     "eslint": "^8.44.0",
     "eslint-plugin-cypress": "^2.13.3",
+    "gh-pages": "^5.0.0",
     "https-localhost": "^4.7.1",
     "lint-staged": "^13.2.3",
     "markdown-it-link-attributes": "^4.0.1",
