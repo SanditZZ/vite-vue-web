@@ -152,8 +152,8 @@ export default {
       <div class="animecard__des py-3 text-sm">
         <p>{{ truncateText(tvShow.overview, 80) }}</p>
       </div>
-      <div class="animecard__tag absolute bottom-0 left-0 right-0 max-w-full flex gap-2 rounded-br-lg bg-light-blue-50 px-7 py-3 pb-3 text-xs lg:text-sm">
-        <span v-for="genre_id in filteredGenreIds" :key="genre_id" class="rounded-xl bg-blue-400 px-3 py-0.5 text-white">{{ getGenreNames([genre_id]).join(', ') }}</span>
+      <div class="animecard__tag absolute bottom-0 left-0 right-0 max-w-full flex justify-center gap-2 rounded-br-lg bg-light-blue-50 px-3 py-3 pb-3 text-[12px] lg:justify-initial lg:px-6 lg:text-sm">
+        <span v-for="genre_id in filteredGenreIds" :key="genre_id" class="rounded-xl bg-blue-400 px-2.3 py-0.5 text-white lg:px-3">{{ getGenreNames([genre_id]).join(', ') }}</span>
       </div>
     </div>
   </div>
