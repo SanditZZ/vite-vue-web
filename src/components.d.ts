@@ -8,9 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AnimeCard: typeof import('./components/AnimeCard.vue')['default']
+    AnimeCharacter: typeof import('./components/AnimeCharacter.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TestCompositionAPI: typeof import('./components/TestCompositionAPI.vue')['default']
     Tester: typeof import('./components/Tester.vue')['default']
     TheCounter: typeof import('./components/TheCounter.vue')['default']
     TheFooter: typeof import('./components/TheFooter.vue')['default']
