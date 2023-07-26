@@ -28,6 +28,10 @@ const { t } = useI18n()
       <div i-carbon-logo-github />
     </a>
 
+    <a icon-btn rel="noreferrer" href="https://sanditzz.github.io/3d-portfolio-po" target="_blank" title="GitHub">
+      <div i-carbon-bat />
+    </a>
+
     <!-- <a icon-btn :title="t('button.toggle_langs')" @click="toggleLocales()">
       <div i-carbon-language />
     </a> -->
