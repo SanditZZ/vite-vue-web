@@ -24,16 +24,12 @@ const { t } = useI18n()
       <div i-carbon-dicom-overlay />
     </RouterLink>
 
+    <a icon-btn rel="noreferrer" href="https://github.com/SanditZZ" target="_blank" title="GitHub">
+      <div i-carbon-logo-github />
+    </a>
+
     <!-- <a icon-btn :title="t('button.toggle_langs')" @click="toggleLocales()">
       <div i-carbon-language />
-    </a> -->
-
-    <!-- <RouterLink icon-btn to="/about" :title="t('button.about')" data-test-id="about">
-      <div i-carbon-dicom-overlay />
-    </RouterLink> -->
-
-    <!-- <a icon-btn rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank" title="GitHub">
-      <div i-carbon-logo-github />
     </a> -->
   </nav>
 </template>

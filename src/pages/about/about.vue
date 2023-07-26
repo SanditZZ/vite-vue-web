@@ -14,5 +14,9 @@
     <button icon-btn @click="toggleDark()">
       <div i="carbon-sun dark:carbon-moon" />
     </button>
+
+    <a icon-btn rel="noreferrer" href="https://github.com/SanditZZ" target="_blank" title="GitHub">
+      <div i-carbon-logo-github />
+    </a>
   </nav>
 </template>
