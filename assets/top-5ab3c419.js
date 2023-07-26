@@ -1,0 +1,1 @@
+import{h as o,r as t,o as n,c as r,b as c,F as s,e as a}from"./app-d03b4111.js";const _={},l=a("h4",null,"Menu Bar",-1);function u(m,p){const e=t("RouterView");return n(),r(s,null,[l,c(e)],64)}const f=o(_,[["render",u]]);export{f as default};
