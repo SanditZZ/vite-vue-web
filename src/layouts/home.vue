@@ -36,6 +36,8 @@ export default {
   >
     <RouterView />
 
+    <TheHeader />
+
     <h1 class="py-5 text-3xl font-bold">
       Currently Airing Animation Shows
     </h1>
@@ -50,8 +52,9 @@ export default {
 
     <TheFooter />
     <div mx-auto mt-5 text-center text-sm opacity-50>
-      <h3>Home Layout</h3>
+    <!-- <h3>Home Layout</h3>
       [Home Layout]
+    </div> -->
     </div>
   </main>
 </template>

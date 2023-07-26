@@ -6,5 +6,9 @@ export interface TVShow {
   name: string
   overview: string
   poster_path: string
+  origin_country: string
+  vote_average: number
+  vote_count: number
+  genre_ids: number
   // Add more properties as needed
 }

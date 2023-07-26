@@ -15,16 +15,12 @@ defineOptions({
 </script>
 
 <template>
-  <div>
-    <div text-4xl>
-      <div i-carbon:campsite inline-block />
-    </div>
-    <p>
+  <div pb-8 pt-10>
+    <h1 class="text-5xl font-black">
       <a rel="noreferrer">
-        Anime Tracker &#x1F575;
+        &#x1F575; Animation Hub &#x1F575;
       </a>
-    </p>
-    <div py-7 />
+    </h1>
     <!-- <p>
       <em text-sm opacity-75>{{ t('intro.desc') }}</em>
     </p>
