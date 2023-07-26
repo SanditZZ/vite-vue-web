@@ -1,4 +1,4 @@
-# :detective: [Vue + Vite Website](https://sanditzz.github.io/vite-vue-web/){:target="_blank"} :detective:
+# :detective: [Vue + Vite Website](https://sanditzz.github.io/vite-vue-web/) :detective:
 Created using  **Vue + Vite** & **TypeScript**
 
-**[Live Demo](https://sanditzz.github.io/vite-vue-web/){:target="_blank"}**
+**[Live Demo](https://sanditzz.github.io/vite-vue-web/)**
