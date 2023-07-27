@@ -16,7 +16,7 @@ defineOptions({
 
 <template>
   <div pb-8 pt-10>
-    <h1 class="text-5xl font-black">
+    <h1 class="text-3xl font-black lg:text-5xl">
       <a rel="noreferrer">
         &#x1F575; Animation Hub &#x1F575;
       </a>

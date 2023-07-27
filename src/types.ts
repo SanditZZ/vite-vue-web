@@ -11,5 +11,6 @@ export interface TVShow {
   vote_average: number
   vote_count: number
   genre_ids: number
+  id: number
   // Add more properties as needed
 }
