@@ -38,7 +38,7 @@ export default {
 
     <TheHeader />
 
-    <h1 class="py-5 text-3xl font-bold">
+    <h1 class="pb-15 text-xl font-bold lg:py-5 lg:text-3xl">
       Currently Airing Animation Shows
     </h1>
     <div>

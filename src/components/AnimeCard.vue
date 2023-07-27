@@ -90,6 +90,11 @@ export default {
   computed: {
     filteredGenreIds(): number[] {
       const genre_ids = this.tvShow.genre_ids as unknown as number[]
+      const voteCountThreshold = 100
+
+      if (this.tvShow.vote_count < voteCountThreshold)
+        return []
+
       return genre_ids.filter((genreId: number) => genreId !== 16)
     },
   },
@@ -127,15 +132,22 @@ export default {
       })
       return genreNames
     },
+
+    goToTmdbUrl(): void {
+      const tmdbBaseUrl = 'https://www.themoviedb.org/tv/'
+      const tvShowId = this.tvShow.id
+      const tmdbUrl = tmdbBaseUrl + tvShowId
+      window.open(tmdbUrl, '_blank')
+    },
   },
 }
 </script>
 
 <template>
-  <div class="animecard__container mx-4 h-[250px] w-11/12 flex rounded-lg bg-gray-200 shadow-lg lg:w-auto">
+  <div v-if="filteredGenreIds.length > 0" :key="tvShow.id" class="animecard__container mx-4 h-[250px] w-11/12 flex cursor-pointer overflow-hidden rounded-xl border-none bg-gray-200 shadow-lg duration-300 lg:w-auto hover:bg-sky-200" @click="goToTmdbUrl">
     <div class="animecard__img__container relative w-[160px] lg:w-[165px]">
-      <img class="animcard__img h-full rounded-l object-cover object-center" :src="getFullPosterUrl(tvShow.poster_path)" alt="anime-poster">
-      <div class="animecard__title lg:text-md absolute bottom-0 left-0 right-0 max-w-auto rounded-bl-sm bg-zinc-950 px-3 py-2 text-left text-sm text-white lg:px-4 lg:py-4">
+      <img class="animcard__img max-h-full max-w-full object-cover object-center" :src="getFullPosterUrl(tvShow.poster_path)" alt="anime-poster">
+      <div class="animecard__title lg:text-md absolute bottom-0 left-0 right-0 z-10 m-0 w-full from-blue-600 to-blue-400 bg-gradient-to-b p-0 px-3 py-2 text-left text-sm text-white lg:px-4 lg:py-4">
         <h1 class="font-black">
           {{ tvShow.name }}
         </h1>
@@ -144,7 +156,7 @@ export default {
     </div>
     <div class="animecard__details relative max-h-[265px] w-70 px-6 text-left text-xs text-gray-800">
       <h1 class="animecard__airing pt-5 text-base font-bold lg:text-xl">
-        Ratings: {{ tvShow.vote_average }}
+        Ratings: <span px-1 text-2xl text-blue-500> {{ tvShow.vote_average }}</span>
       </h1>
       <h2 class="animecard__source pt-1">
         Votes: {{ tvShow.vote_count }}
@@ -152,7 +164,7 @@ export default {
       <div class="animecard__des py-3 text-sm">
         <p>{{ truncateText(tvShow.overview, 80) }}</p>
       </div>
-      <div class="animecard__tag absolute bottom-0 left-0 right-0 max-w-full flex justify-center gap-2 rounded-br-lg bg-light-blue-50 px-3 py-3 pb-3 text-[12px] lg:justify-initial lg:px-6 lg:text-sm">
+      <div class="animecard__tag absolute bottom-0 left-0 right-0 w-full flex justify-center gap-2 rounded-br-lg bg-light-blue-50 px-3 py-3 pb-3 text-[12px] lg:justify-initial lg:px-6 lg:text-sm">
         <span v-for="genre_id in filteredGenreIds" :key="genre_id" class="rounded-xl bg-blue-400 px-2.3 py-0.5 text-white lg:px-3">{{ getGenreNames([genre_id]).join(', ') }}</span>
       </div>
     </div>
