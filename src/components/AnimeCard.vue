@@ -139,6 +139,28 @@ export default {
       const tmdbUrl = tmdbBaseUrl + tvShowId
       window.open(tmdbUrl, '_blank')
     },
+
+    getGenreBackgroundColor(genre_id: number): string {
+      switch (genre_id) {
+        case 10759: // Action
+          return 'bg-red-500'
+        case 35: // Comedy
+          return 'bg-yellow-500'
+        case 18: // Drama
+          return 'bg-blue-500'
+        case 10765: // Fantasy
+          return 'bg-pink-500'
+        case 10762: // Kids
+          return 'bg-teal-500'
+        case 10751: // Family
+          return 'bg-orange-500'
+        case 9648: // Mystery
+          return 'bg-purple-500'
+
+        default:
+          return 'bg-gray-500'
+      }
+    },
   },
 }
 </script>
@@ -165,7 +187,9 @@ export default {
         <p>{{ truncateText(tvShow.overview, 80) }}</p>
       </div>
       <div class="animecard__tag absolute bottom-0 left-0 right-0 w-full flex justify-center gap-2 rounded-br-lg bg-light-blue-50 px-3 py-3 pb-3 text-[12px] lg:justify-initial lg:px-6 lg:text-sm">
-        <span v-for="genre_id in filteredGenreIds" :key="genre_id" class="rounded-xl bg-blue-400 px-2.3 py-0.5 text-white lg:px-3">{{ getGenreNames([genre_id]).join(', ') }}</span>
+        <span v-for="genre_id in filteredGenreIds" :key="genre_id" :class="`rounded-xl px-2.3 py-0.5 text-white lg:px-3 ${getGenreBackgroundColor(genre_id)}`">
+          {{ getGenreNames([genre_id]).join(', ') }}
+        </span>
       </div>
     </div>
   </div>
