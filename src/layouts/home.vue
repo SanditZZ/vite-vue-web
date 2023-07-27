@@ -10,12 +10,24 @@ export default {
       tvShows: [] as TVShow[],
       loading: true,
       ascendingSort: true,
+      searchQuery: '',
     }
   },
 
   computed: {
     sortedTVShows(): TVShow[] {
       return sortTvShowsByVoteAverage(this.tvShows)
+    },
+    filteredTVShows(): TVShow[] {
+      const searchQueryLower = this.searchQuery.toLowerCase().trim()
+      if (searchQueryLower) {
+        return this.tvShows.filter(tvShows =>
+          tvShows.name.toLowerCase().includes(searchQueryLower),
+        )
+      }
+      else {
+        return this.tvShows
+      }
     },
   },
 
@@ -55,6 +67,9 @@ export default {
       else
         this.tvShows = sortedTvShows
     },
+    onSearchInput() {
+      this.ascendingSort = true
+    },
   },
 
 }
@@ -69,12 +84,12 @@ export default {
 
     <TheHeader />
 
-    <h1 class="pb-15 text-xl font-bold lg:py-5 lg:text-3xl">
+    <h1 class="pb-3 text-xl font-bold lg:py-8 lg:text-3xl">
       Currently Airing Animation Shows
     </h1>
 
     <!-- sort button -->
-    <div flex justify-center py-3>
+    <div flex justify-center py-8 lg:py-3>
       <button inline flex justify-center gap-2 text-center @click="toggleSorting">
         Sort by Ratings
         <div v-if="ascendingSort" i-carbon-arrow-up />
@@ -82,12 +97,22 @@ export default {
       </button>
     </div>
 
+    <!-- Search input -->
+    <div pb-10 lg:py-3 lg:pb-1>
+      <input v-model="searchQuery" border-1 border-blueGray rounded-md bg-white px-3 py-1 text-blueGray shadow-md focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 type="text" placeholder="Search Shows" @input="onSearchInput">
+    </div>
+
     <div>
       <div v-if="loading">
         Loading...
       </div>
+      <div v-else-if="filteredTVShows.length === 0">
+        <p py-3>
+          No Results Found
+        </p>
+      </div>
       <div v-else class="animecard__wrap mx-0 flex flex-wrap justify-center gap-x-10 gap-y-10 lg:m-10">
-        <AnimeCard v-for="(tvShow, index) in tvShows" :key="index" :tv-show="tvShow" />
+        <AnimeCard v-for="(tvShow, index) in filteredTVShows" :key="index" :tv-show="tvShow" />
       </div>
     </div>
 
