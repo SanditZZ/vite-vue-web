@@ -1,14 +1,24 @@
 <script lang="ts">
 import axios from 'axios'
 import type { TVShow } from '../types'
+import { sortTvShowsByVoteAverage } from '../utils/sortUtils'
 
 export default {
+
   data() {
     return {
       tvShows: [] as TVShow[],
       loading: true,
+      ascendingSort: true,
     }
   },
+
+  computed: {
+    sortedTVShows(): TVShow[] {
+      return sortTvShowsByVoteAverage(this.tvShows)
+    },
+  },
+
   async mounted() {
     try {
       const response = await axios.get('https://api.themoviedb.org/3/discover/tv', {
@@ -26,6 +36,27 @@ export default {
       this.loading = false
     }
   },
+
+  methods: {
+    sortTvShowsByVoteAverage(): void {
+      this.tvShows = sortTvShowsByVoteAverage(this.tvShows)
+    },
+    toggleSorting() {
+      // Toggle the sorting order
+      this.ascendingSort = !this.ascendingSort
+
+      // Sort the TV shows based on the sorting order
+      const sortedTvShows = sortTvShowsByVoteAverage(this.tvShows)
+
+      // If sorting order is descending (lowest ratings first), reverse the array
+      if (!this.ascendingSort)
+        this.tvShows = sortedTvShows.reverse()
+
+      else
+        this.tvShows = sortedTvShows
+    },
+  },
+
 }
 </script>
 
@@ -41,6 +72,16 @@ export default {
     <h1 class="py-5 text-3xl font-bold">
       Currently Airing Animation Shows
     </h1>
+
+    <!-- sort button -->
+    <div flex justify-center py-3>
+      <button inline flex justify-center gap-2 text-center @click="toggleSorting">
+        Sort by Ratings
+        <div v-if="ascendingSort" i-carbon-arrow-up />
+        <div v-else i-carbon-arrow-down />
+      </button>
+    </div>
+
     <div>
       <div v-if="loading">
         Loading...
